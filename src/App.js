@@ -1,30 +1,14 @@
 import Header from './components/Header'
 import Tasks from './components/Tasks';
 import AddTask from './components/AddTask';
-import { useState } from 'react'
+//import 'react-calendar/dist/Calendar.css'
+import Calendar from 'react-calendar';
+import { useState } from 'react';
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false)
-  const [tasks, setTasks] = useState([
-    {
-        id: 1,
-        text: 'Doctors Appointment',
-        day: 'Feb 5th at 2:30pm',
-        reminder: true,
-    },
-    {
-        id: 2,
-        text: 'Whatever',
-        day: 'No Optimal for days',
-        reminder: true,
-    },
-    {
-        id: 3,
-        text: 'Last',
-        day: 'Feb 5th',
-        reminder: false,
-    }
-])
+  const [date, setDate] = useState(new Date())
+  const [tasks, setTasks] = useState([])
 
 //Add Task
 
@@ -51,7 +35,12 @@ const toggleReminder = (id) => {
       {showAddTask && <AddTask onAdd={addTask} />}
       <h3>Hello World!</h3>
       {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>) : ('No Tasks')}
-
+      <div className="calender-container">
+        <Calendar onChange={setDate} value={date}/>
+      </div>
+      <div className="text-center">
+        Selected date: {date.toDateString()}
+      </div>
     </div>
   );
 }

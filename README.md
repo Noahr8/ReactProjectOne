@@ -2,10 +2,11 @@
 This app is a simple task tracker which was developped following these youtube tutorial(s):
 https://www.youtube.com/watch?v=w7ejDZ8SWv8&ab_channel=TraversyMedia
 
-Plans: Add a calender to show tasks by date
-       Use firebase backend to store tasks
-       Use firebase to host
-       Maybe add more features ?
+Plans: 
+- Add a calender to show tasks by date
+- Use firebase backend to store tasks
+- Use firebase to host
+- Maybe add more features ?
 
 
 Default React README stuff:
