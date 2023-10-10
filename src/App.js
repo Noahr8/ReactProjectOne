@@ -14,7 +14,7 @@ function App() {
 
 const addTask = (task) => {
   const id = Math.floor(Math.random() * 10000) + 1
-
+  console.log(task.date)
   const newTask = { id, ...task }
   setTasks([...tasks, newTask])
 }
@@ -33,7 +33,6 @@ const toggleReminder = (id) => {
     <div className="container">
       <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask}/>
       {showAddTask && <AddTask onAdd={addTask} />}
-      <h3>Hello World!</h3>
       {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>) : ('No Tasks')}
       <div className="calender-container">
         <Calendar onChange={setDate} value={date}/>
