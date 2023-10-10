@@ -1,6 +1,15 @@
 # Firebase React Personal Project for Research Milestone
+This app is a simple task tracker which was developped following these youtube tutorial(s):
+https://www.youtube.com/watch?v=w7ejDZ8SWv8&ab_channel=TraversyMedia
 
-# Getting Started with Create React App
+Plans: Add a calender to show tasks by date
+       Use firebase backend to store tasks
+       Use firebase to host
+       Maybe add more features ?
+
+
+Default React README stuff:
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
