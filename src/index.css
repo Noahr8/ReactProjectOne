@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 
-/*Taken directly from youtube tutorial for simplicity sake*/
+/*Taken directly from youtube tutorial for simplicity sake, adapted for my project, added calendar and date picker formatted at the bottom*/
 
 * {
   box-sizing: border-box;
@@ -13,7 +13,7 @@ body {
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;

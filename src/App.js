@@ -46,7 +46,7 @@ const toggleReminder = (id) => {
       <div className="selected-date">
         Selected date: {date.toDateString()}
       </div>
-      {tasks.length > 0 ? (<Tasks tasks={tasksOnSelectedDate} onDelete={deleteTask} onToggle={toggleReminder}/>) : (' No Tasks on this date')}
+      {tasksOnSelectedDate.length > 0 ? (<Tasks tasks={tasksOnSelectedDate} onDelete={deleteTask} onToggle={toggleReminder}/>) : (' No Tasks on this date')}
       <div className="all-tasks">
         <AllTasks onAdd={() => setShowAllTasks(!showAllTasks)} showAdd={showAllTasks}/>
       </div>
