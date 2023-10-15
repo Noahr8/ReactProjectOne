@@ -1,7 +1,6 @@
 import Header from './components/Header'
 import Tasks from './components/Tasks';
 import AddTask from './components/AddTask';
-//import 'react-calendar/dist/Calendar.css'
 import Calendar from 'react-calendar';
 import { useState } from 'react';
 import AllTasks from './components/AllTasks';
