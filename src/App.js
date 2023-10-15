@@ -2,14 +2,38 @@ import Header from './components/Header'
 import Tasks from './components/Tasks';
 import AddTask from './components/AddTask';
 import Calendar from 'react-calendar';
-import { useState } from 'react';
+import DatePicker from 'react-date-picker';
+import { useEffect, useState } from 'react';
 import AllTasks from './components/AllTasks';
+import { db } from './config/firebase-config'
+import { addDoc, getDocs, collection, Timestamp } from 'firebase/firestore'
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false)
   const [showAllTasks, setShowAllTasks] = useState(false)
   const [date, setDate] = useState(new Date())
+  //const [dateTimeStamp, setDateTimeStamp] = useState()
   const [tasks, setTasks] = useState([])
+
+
+  const [taskList, setTaskList] = useState([]);
+
+  const tasksCollectionRef = collection(db, "tasks");
+
+  useEffect(() => {
+    const getTaskList = async () => {
+      try {
+        const data = await getDocs(tasksCollectionRef);
+        const filteredData = data.docs.map((doc) => ({...doc.data(), id: doc.id}));
+        console.log(filteredData);
+        setTaskList(filteredData);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    getTaskList();
+  }, [])
 
   const tasksOnSelectedDate = tasks.filter(
     (task) =>
@@ -23,6 +47,21 @@ const addTask = (task) => {
   const id = Math.floor(Math.random() * 10000) + 1
   const newTask = { id, ...task }
   setTasks([...tasks, newTask])
+  const taskDateTimeStamp = task.date.getTime();
+  onAddTask(task);
+}
+
+const onAddTask = async (task) => {
+  try {
+    await addDoc(tasksCollectionRef, {
+      //id: task.id,
+      // name: task.name,
+      // date: taskDateTimeStamp,
+      // reminder: task.reminder,
+    })
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 //Delete Task
