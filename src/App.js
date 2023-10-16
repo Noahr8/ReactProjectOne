@@ -6,7 +6,7 @@ import DatePicker from 'react-date-picker';
 import { useEffect, useState } from 'react';
 import AllTasks from './components/AllTasks';
 import { db } from './config/firebase-config'
-import { getDocs, collection, deleteDoc, doc } from 'firebase/firestore'
+import { getDocs, collection, deleteDoc, updateDoc, doc } from 'firebase/firestore'
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false)
@@ -72,8 +72,9 @@ const deleteTask = async (id) => {
 }
 
 //Toggle Reminder
-const toggleReminder = (id) => {
+const toggleReminder = async (id, task) => {
   setTasks(tasks.map((task => task.id == id ? { ...task, reminder: !task.reminder } : task)))
+  await updateDoc(doc(db, "tasks", id), { reminder: !task.reminder});
 }
 
   return (
