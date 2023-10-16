@@ -1,10 +1,11 @@
 # This is the original repository!
 
-I unfortunately did not notice that the repository was required to be under the research assigment github link, so I created my own repository when starting the project and just now saw that I had to use this repo.
-
-Sorry for the inconvience! It wasn't letting me pull and push with my current ssh key to the research repo, will work on setting it up!
+Sorry for the inconvience! Hopefully it all worked out!
 
 # Firebase React Personal Project for Research Milestone
+Youtube video:
+https://youtu.be/Ix7z6B7248I
+
 This app is a simple task tracker which was developped following these youtube tutorial(s):
 https://www.youtube.com/watch?v=w7ejDZ8SWv8&ab_channel=TraversyMedia
 https://www.youtube.com/watch?v=2hR-uWjBAgw&ab_channel=PedroTech
