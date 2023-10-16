@@ -6,7 +6,7 @@ import DatePicker from 'react-date-picker';
 import { useEffect, useState } from 'react';
 import AllTasks from './components/AllTasks';
 import { db } from './config/firebase-config'
-import { getDocs, collection, Timestamp } from 'firebase/firestore'
+import { getDocs, collection, deleteDoc, doc } from 'firebase/firestore'
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false)
@@ -28,9 +28,17 @@ function App() {
     const getTaskList = async () => {
       try {
         const data = await getDocs(tasksCollectionRef);
-        const filteredData = data.docs.map((doc) => ({...doc.data(), id: doc.id}));
-        console.log(filteredData);
-        setTaskList(filteredData);
+        const filteredData = data.docs.map((doc) => {
+          const firestoreData = doc.data()
+          return {
+            id: doc.id,
+            text: firestoreData.name,
+            date: firestoreData.date.toDate(),
+            reminder: firestoreData.reminder || false,
+          };
+        });
+        console.log(filteredData)
+        setTasks(filteredData)
       } catch (err) {
         console.error(err);
       }
@@ -48,31 +56,19 @@ function App() {
 
 //Add Task
 const addTask = async (task) => {
-  // const id = Math.floor(Math.random() * 10000) + 1
-  // const newTask = { id, ...task }
   setTasks([...tasks, task])
-  //const taskDateTimeStamp = task.date.getTime();
   console.log(task);
-  // onAddTask(newTask);
 }
 
-// const onAddTask = async (task) => {
-
-//   try {
-//     await addDoc(tasksCollectionRef, {
-//       id: 1,
-//       name: "Hi",
-//       date: 1239201,
-//       reminder: true,
-//     })
-//   } catch (err) {
-//     console.error(err);
-//   }
-// }
 
 //Delete Task
-const deleteTask = (id) => {
+const deleteTask = async (id) => {
   setTasks(tasks.filter((task) => task.id !== id))
+  try {
+    await deleteDoc(doc(db, 'tasks', id))
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 //Toggle Reminder
