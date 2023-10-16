@@ -1,6 +1,15 @@
+# This is not the original repository!
+
+I unfortunately did not notice that the repository was required to be under the research assigment github link, so I created my own repository when starting the project and just now saw that I had to use this repo. Here is a link to the original repository with commit logs:
+
+https://github.com/Noahr8/ReactProjectOne
+
+Sorry for the inconvience! It wasn't letting me pull and push with my current ssh key, will work on setting it up!
+
 # Firebase React Personal Project for Research Milestone
 This app is a simple task tracker which was developped following these youtube tutorial(s):
 https://www.youtube.com/watch?v=w7ejDZ8SWv8&ab_channel=TraversyMedia
+https://www.youtube.com/watch?v=2hR-uWjBAgw&ab_channel=PedroTech
 
 Plans: 
 - Add a calender to show tasks by date
